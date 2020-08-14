@@ -26,13 +26,34 @@
 
 // alert(`Hello, ${user}`);
 
-console.log(4 + +'5');
+// console.log(4 + +'5');
 
-let incr = 10,
-    decr = 10;
+// let incr = 10,
+//     decr = 10;
 
-// ++incr;
-// --decr;
+// // ++incr;
+// // --decr;
 
-console.log(++incr); 
-console.log(--decr); 
+// console.log(++incr); 
+// console.log(--decr); 
+
+
+const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+//console.log(numberOfFilms);
+
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+for (let i = 0; i < 2; i++) {
+    const filmName = prompt('Один из последнихосмотренных фильмов?', '');
+    const filmScore  = prompt('На сколько оцените его?', '');
+    personalMovieDB.movies[filmName] = filmScore;
+}
+
+console.log(personalMovieDB);
