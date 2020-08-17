@@ -37,8 +37,11 @@
 // console.log(++incr); 
 // console.log(--decr); 
 
+let numberOfFilms;
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+do {
+    numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
+} while (numberOfFilms === 0 || isNaN(numberOfFilms));
 //console.log(numberOfFilms);
 
 
@@ -51,9 +54,28 @@ const personalMovieDB = {
 };
 
 for (let i = 0; i < 2; i++) {
-    const filmName = prompt('Один из последнихосмотренных фильмов?', '');
-    const filmScore  = prompt('На сколько оцените его?', '');
+
+    let filmName = prompt('Один из последних просмотренных фильмов?', '');
+
+    while (filmName === '' || filmName === null || filmName.length > 50) {
+        filmName = prompt('Один из последних просмотренных фильмов?', '');
+    }
+
+    let filmScore = +prompt('На сколько оцените его?', '');
+
+    while (filmScore === 0  || isNaN(numberOfFilms)) {
+        filmScore = +prompt('На сколько оцените его?', '');
+    }
+
     personalMovieDB.movies[filmName] = filmScore;
 }
+
+if (personalMovieDB.count <= 10) {
+    alert('Просмотрено давольно мало фильмов');
+} else if (personalMovieDB.count > 10 && (personalMovieDB.count <= 30)) {
+    alert('Вы классический зритель');
+} else if (personalMovieDB.count > 30) {
+    alert('Вы киноман'); 
+} else  {alert('Произошла ошибка');}
 
 console.log(personalMovieDB);
